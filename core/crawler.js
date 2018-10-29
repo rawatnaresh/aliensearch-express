@@ -1,5 +1,4 @@
 let request = require('request');
-let rp = require('request-promise');
 let cheerio = require('cheerio');
 let URL = require('url-parse');
 let path = require('path');
@@ -22,13 +21,19 @@ function crawl(){
 
     let options = {
         uri:nextPage,
-        transform:function(body) {
-            return cheerio.load(body);
-        }
+        timeout:10000,
+        
     };
 
-    rp(options)
-    .then(function($){
+    request(options,function(err, response, body){
+        if (err && err.code === 'ESOCKETTIMEDOUT') {
+            // console.log("-----------------DARN TIMEOUT:Moving to Next Link-----------------");
+            //if ESOCKETTIMEDOUT error occur, we move to the next link to crawl.
+            crawl();
+            return;
+        }
+        //No TIMEOUT error. Load HTML with cheerio.
+        let $ = cheerio.load(body);
         linkFinder($,baseUrl);
         if(pagesToVisit.length > 0){
             crawl();
@@ -36,9 +41,6 @@ function crawl(){
             console.log("Crawling ended");
         }
 
-    })
-    .catch(function(err) {
-        console.log(err);
     });
 
 }
