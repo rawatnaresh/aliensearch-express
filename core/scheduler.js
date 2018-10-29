@@ -4,7 +4,7 @@ const Site = require('../models/Site');
 const crawler = require('./crawler');
 
 module.exports.crawlerCronJob =  new CronJob({
-        cronTime:'0 8 * * * *',
+        cronTime:'0 0 12 * * *',
         onTick:function(){
             console.log("-------------------------Crawling Started--------------------");
     
