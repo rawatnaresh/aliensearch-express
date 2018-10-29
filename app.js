@@ -59,7 +59,7 @@ app.use(function(req, res, next) {
 });
 
 //Initializing cron job.
-// scheduler.crawlerCronJob.start();
+scheduler.crawlerCronJob.start();
 
 /* Finally we start our server */
 let server = app.listen(process.env.PORT || 8000, function(){
