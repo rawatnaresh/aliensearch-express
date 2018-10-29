@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"node app.js"
+    "start": "node app.js"
   },
   "author": "",
   "license": "ISC",
@@ -19,8 +19,6 @@
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2",
-    "url-parse": "^1.4.3",
     "url-parser": "0.0.1"
   }
 }
