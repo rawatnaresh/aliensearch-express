@@ -16,7 +16,9 @@ module.exports.crawlerCronJob =  new CronJob({
                     }))
                 }
                 
-            });
+            }).catch(function(err){
+                console.log(err);
+            })
         },
         timeZone:'Asia/Kolkata',
     });
