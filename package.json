@@ -19,6 +19,6 @@
     "nodemon": "^1.18.4",
     "path": "^0.12.7",
     "request": "^2.88.0",
-    "url-parser": "0.0.1"
+    "url-parse": "^1.4.3"
   }
 }
